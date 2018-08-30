@@ -1,16 +1,12 @@
-package ca.cours5b5.paulsasu;
+package ca.cours5b5.paulsasu.activites;
 
-import android.content.Context;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.AttributeSet;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import java.util.Locale;
+import ca.cours5b5.paulsasu.R;
 
-public class Parametres extends AppCompatActivity {
-
+public class AParametres extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +17,3 @@ public class Parametres extends AppCompatActivity {
 
     }
 }
-
-
-
-
