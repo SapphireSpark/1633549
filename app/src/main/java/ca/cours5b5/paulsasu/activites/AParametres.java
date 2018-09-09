@@ -6,14 +6,21 @@ import android.util.Log;
 
 import ca.cours5b5.paulsasu.R;
 
-public class AParametres extends AppCompatActivity {
+public class AParametres extends Activite {
+
+    static {
+        Log.d("AParametres","::Static");
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parametres);
 
-        Log.d("MonEtiquette",this.getResources().getString(R.string.def));
-
-
     }
+
+    static {
+        Log.d("Activite","::Static");
+    }
+
 }

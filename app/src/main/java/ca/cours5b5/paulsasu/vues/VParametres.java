@@ -3,13 +3,14 @@ package ca.cours5b5.paulsasu.vues;
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import ca.cours5b5.paulsasu.R;
 import ca.cours5b5.paulsasu.global.GConstantes;
 
-public class VParametres extends ConstraintLayout{
+public class VParametres extends Vue{
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
@@ -54,5 +55,9 @@ public class VParametres extends ConstraintLayout{
 
     public VParametres(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+    }
+
+    static {
+        Log.d("VParametres","::Static");
     }
 }
