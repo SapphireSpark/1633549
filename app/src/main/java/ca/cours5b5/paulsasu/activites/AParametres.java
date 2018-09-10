@@ -8,10 +8,6 @@ import ca.cours5b5.paulsasu.R;
 
 public class AParametres extends Activite {
 
-    static {
-        Log.d("AParametres","::Static");
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +16,7 @@ public class AParametres extends Activite {
     }
 
     static {
-        Log.d("Activite","::Static");
+        Log.d("Atelier04","AParametres::Static");
     }
 
 }

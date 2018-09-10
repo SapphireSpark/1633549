@@ -34,6 +34,6 @@ public class VMenuPrincipal extends Vue{
 
 
     static {
-        Log.d("VMenuPrincipal","::Static");
+        Log.d("Atelier04","VMenuPrincipal::Static");
     }
 }

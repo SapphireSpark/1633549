@@ -58,6 +58,6 @@ public class VParametres extends Vue{
     }
 
     static {
-        Log.d("VParametres","::Static");
+        Log.d("Atelier04","VParametres::Static");
     }
 }

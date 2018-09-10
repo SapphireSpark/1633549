@@ -9,7 +9,7 @@ import android.util.Log;
 import ca.cours5b5.paulsasu.R;
 
 public abstract class Vue extends ConstraintLayout {
-    Class metaDonnes = Vue.class;
+    Class metaDonnes = this.getClass();
     public Vue(Context context) {
         super(context);
     }
@@ -26,10 +26,10 @@ public abstract class Vue extends ConstraintLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        Log.d("Vue",this.getResources().getString(Integer.parseInt(metaDonnes.getSimpleName())));
+        Log.d("Atelier04",metaDonnes.getSimpleName() + "::onFinishInflate");
     }
 
     static {
-        Log.d("Vue","::Static");
+        Log.d("Atelier04","Vue::Static");
     }
 }

@@ -12,7 +12,7 @@ import ca.cours5b5.paulsasu.R;
 public class AMenuPrincipal extends Activite {
 
     static {
-        Log.d("AMenuPrincipal","::Static");
+        Log.d("Atelier04","AMenuPrincipal::Static");
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
