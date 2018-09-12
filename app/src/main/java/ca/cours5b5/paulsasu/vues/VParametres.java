@@ -9,6 +9,7 @@ import android.widget.Spinner;
 
 import ca.cours5b5.paulsasu.R;
 import ca.cours5b5.paulsasu.global.GConstantes;
+import ca.cours5b5.paulsasu.modeles.MParametres;
 
 public class VParametres extends Vue{
     @Override
@@ -19,30 +20,17 @@ public class VParametres extends Vue{
         Spinner spinL = this.findViewById(R.id.spinnerL);
         Spinner spinW = this.findViewById(R.id.spinnerW);
 
-        ArrayAdapter<Integer> adapterH = new ArrayAdapter<>(this.getContext(), R.layout.support_simple_spinner_dropdown_item);
-        ArrayAdapter<Integer> adapterL = new ArrayAdapter<>(this.getContext(), R.layout.support_simple_spinner_dropdown_item);
-        ArrayAdapter<Integer> adapterW = new ArrayAdapter<>(this.getContext(), R.layout.support_simple_spinner_dropdown_item);
+        ArrayAdapter<Integer> adapterH = new ArrayAdapter<>(this.getContext(), R.layout.support_simple_spinner_dropdown_item, MParametres.instance.getChoixHauteur());
+        ArrayAdapter<Integer> adapterL = new ArrayAdapter<>(this.getContext(), R.layout.support_simple_spinner_dropdown_item, MParametres.instance.getChoixLargeur());
+        ArrayAdapter<Integer> adapterW = new ArrayAdapter<>(this.getContext(), R.layout.support_simple_spinner_dropdown_item, MParametres.instance.getChoixPourGagner());
 
         spinH.setAdapter(adapterH);
         spinL.setAdapter(adapterL);
         spinW.setAdapter(adapterW);
 
-
-        for (int i = 0; i <= (GConstantes.HAUT_MAX - GConstantes.HAUT_MIN); i++) {
-            adapterH.add(GConstantes.HAUT_MIN + i);
-        }
-
-        for (int i = 0; i <= (GConstantes.LARG_MAX - GConstantes.LARG_MIN); i++) {
-            adapterL.add(GConstantes.LARG_MIN + i);
-        }
-
-        for (int i = 0; i <= (GConstantes.WIN_MAX - GConstantes.WIN_MIN); i++) {
-            adapterW.add(GConstantes.WIN_MIN + i);
-        }
-
-        spinH.setSelection(2);
-        spinL.setSelection(3);
-        spinW.setSelection(1);
+        spinH.setSelection(adapterH.getPosition(MParametres.instance.hauteur));
+        spinL.setSelection(adapterL.getPosition(MParametres.instance.largeur));
+        spinW.setSelection(adapterW.getPosition(MParametres.instance.pourGagner));
 
     }
     public VParametres(Context context) {
