@@ -24,14 +24,10 @@ public abstract class Activite extends AppCompatActivity {
 
             Map<String, Object> objetJson = Jsonification.enObjetJson(json);
 
-            for(Map.Entry<String, Object> entry : objetJson.entrySet()){
-                String cle = entry.getKey();
-                Object valeur = entry.getValue();
-            }
-
             modele.aPartirObjetJson(objetJson);
         }
         Log.d("Atelier04",metaDonnes.getSimpleName() + "::onCreate");
+
     }
 
     @Override

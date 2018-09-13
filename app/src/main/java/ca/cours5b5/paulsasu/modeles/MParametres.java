@@ -4,6 +4,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ import ca.cours5b5.paulsasu.global.GConstantes;
 import ca.cours5b5.paulsasu.serialisation.AttributSerialisable;
 
 public class MParametres extends Modele {
-    public static MParametres instance;
+    public static MParametres instance = new MParametres();
 
     @AttributSerialisable
     public Integer hauteur = GConstantes.HAUT_DEF;
@@ -55,12 +56,29 @@ public class MParametres extends Modele {
 
 
     @Override
-    public void aPartirObjetJson(Map<String, Object> objectJson) {
+    public void aPartirObjetJson(Map<String, Object> objetJson) {
+        for(Map.Entry<String, Object> entry : objetJson.entrySet()){
+            String key = entry.getKey();
+            Object value = entry.getValue();
+            value = value.toString().substring(0, value.toString().indexOf("."));
+            if (key.equals(__hauteur)) {
+                hauteur = Integer.valueOf(value.toString());
+            } else if (key.equals(__largeur)) {
+                largeur = Integer.valueOf(value.toString());
+            } else if (key.equals(__pourGagner)) {
+                pourGagner = Integer.valueOf(value.toString());
+            }
+        }
 
     }
 
     @Override
     public Map<String, Object> enObjetJson() {
-        return null;
+        Map<String, Object> objet = new HashMap<>();
+        objet.put(__hauteur, hauteur);
+        objet.put(__largeur, largeur);
+        objet.put(__pourGagner, pourGagner);
+
+        return objet;
     }
 }
