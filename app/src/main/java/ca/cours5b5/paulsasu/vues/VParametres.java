@@ -34,14 +34,14 @@ public class VParametres extends Vue{
         spinL.setAdapter(adapterL);
         spinW.setAdapter(adapterW);
 
-        spinH.setSelection(adapterH.getPosition(MParametres.instance.hauteur));
-        spinL.setSelection(adapterL.getPosition(MParametres.instance.largeur));
-        spinW.setSelection(adapterW.getPosition(MParametres.instance.pourGagner));
+        spinH.setSelection(adapterH.getPosition(MParametres.instance.parametresPartie.hauteur));
+        spinL.setSelection(adapterL.getPosition(MParametres.instance.parametresPartie.largeur));
+        spinW.setSelection(adapterW.getPosition(MParametres.instance.parametresPartie.pourGagner));
 
         spinH.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                MParametres.instance.hauteur = (int) parent.getAdapter().getItem(position);
+                MParametres.instance.parametresPartie.hauteur = (int) parent.getAdapter().getItem(position);
             }
 
             @Override
@@ -53,7 +53,7 @@ public class VParametres extends Vue{
         spinL.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                MParametres.instance.largeur = (int) parent.getAdapter().getItem(position);
+                MParametres.instance.parametresPartie.largeur = (int) parent.getAdapter().getItem(position);
             }
 
             @Override
@@ -65,7 +65,7 @@ public class VParametres extends Vue{
         spinW.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                MParametres.instance.pourGagner  = (int) parent.getAdapter().getItem(position);
+                MParametres.instance.parametresPartie.pourGagner  = (int) parent.getAdapter().getItem(position);
             }
 
             @Override

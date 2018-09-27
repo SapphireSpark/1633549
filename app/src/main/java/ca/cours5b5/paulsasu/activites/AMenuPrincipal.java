@@ -21,6 +21,15 @@ public class AMenuPrincipal extends Activite {
 
         Button boutonParametres = this.findViewById(R.id.bouton_parametres);
 
+        Button boutonPartie = this.findViewById(R.id.bouton_partie);
+
+        boutonPartie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                accessPartie();
+            }
+        });
+
         boutonParametres.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,6 +42,11 @@ public class AMenuPrincipal extends Activite {
 
     private void accessParam() {
         Intent monIntention = new Intent(this, AParametres.class);
+        this.startActivity(monIntention);
+    }
+
+    private void accessPartie() {
+        Intent monIntention = new Intent(this, APartie.class);
         this.startActivity(monIntention);
     }
 
