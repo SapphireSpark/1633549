@@ -2,6 +2,7 @@ package ca.cours5b5.paulsasu.vues;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.widget.GridLayout;
 
 ;import java.util.ArrayList;
@@ -41,8 +42,8 @@ public class VGrille extends GridLayout {
     }
 
     void creerGrille(int hauteur, int largeur) {
-        hauteur = 0;
-        largeur = 0;
+        this.addView(this, getMiseEnPageEntetes(largeur));
+        this.addView(this, getMiseEnPageCase(hauteur, largeur));
 
 
 
@@ -53,12 +54,22 @@ public class VGrille extends GridLayout {
     }
 
     private void ajouterEnTetes(int largeur){
+        for (int i = 0; i < largeur; i++) {
+            entetes.add(new VEntete(this.getContext(), i));
+        }
 
     }
 
     private LayoutParams getMiseEnPageEntetes(int colonnes){
+        LayoutParams param = new LayoutParams();
+        param.width = 0;
+        param.height = 0;
+        param.setGravity(Gravity.FILL);
 
-        return null;
+        for (VEntete entete : entetes) {
+            entete.setLayoutParams(param);
+        }
+        return param;
     }
 
     private void ajouterCases(int hauteur, int largeur){
