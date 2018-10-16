@@ -30,9 +30,6 @@ public class VPartie extends Vue {
         super.onFinishInflate();
     }
 
-    private void initialiser() {
-
-    }
 
     private void observerPartie() {
         ControleurObservation.observerModele(MParametres.class.getSimpleName(), new ListenerObservateur() {

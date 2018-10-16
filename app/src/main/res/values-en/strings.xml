@@ -5,4 +5,6 @@
     <string name="defW">To win:</string>
     <string name="defB">Parameters</string>
     <string name="defC">Play</string>
+    <string name="defD">Player 1</string>
+    <string name="defE">Player 2</string>
 </resources>

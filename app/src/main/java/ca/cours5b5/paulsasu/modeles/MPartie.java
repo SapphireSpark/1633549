@@ -11,7 +11,9 @@ public class MPartie extends Modele {
     private final String __parametres = "parametres";
 
     public MPartie(MParametresPartie parametres){
-
+        this.parametres.hauteur = parametres.hauteur;
+        this.parametres.largeur = parametres.largeur;
+        this.parametres.pourGagner = parametres.pourGagner;
     }
 
     public MParametresPartie getParametres() {

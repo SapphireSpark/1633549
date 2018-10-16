@@ -5,4 +5,6 @@
     <string name="defW">Pour gagner:</string>
     <string name="defB">Parametres</string>
     <string name="defC">Jouer</string>
+    <string name="defD">Joueur 1</string>
+    <string name="defE">Joueur 2</string>
 </resources>

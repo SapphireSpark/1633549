@@ -23,7 +23,4 @@ public class VCase extends AppCompatButton {
 
     }
 
-    private void initialiser () {
-
-    }
 }
