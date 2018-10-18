@@ -25,8 +25,9 @@ public class MParametresPartie extends Modele {
         partie.setHauteur(mParametres.parametresPartie.hauteur);
         partie.setLargeur(mParametres.parametresPartie.largeur);
         partie.setPourGagner(mParametres.parametresPartie.pourGagner);
+        partie.cloner();
 
-        return partie.cloner();
+        return partie;
     }
 
     public MParametresPartie cloner(){

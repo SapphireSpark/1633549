@@ -52,7 +52,7 @@ public class VPartie extends Vue {
     }
 
     private void initialiserGrille(MPartie partie) {
-        Log.d("Atelier06",partie.toString());
+        Log.d("Atelier06",partie.parametres.hauteur.toString());
         grille.creerGrille(partie.parametres.hauteur, partie.parametres.largeur);
         Log.d("Atelier06",partie.parametres.hauteur.toString());
     }
