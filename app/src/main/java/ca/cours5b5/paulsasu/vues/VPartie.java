@@ -2,6 +2,7 @@ package ca.cours5b5.paulsasu.vues;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 
 import ca.cours5b5.paulsasu.interfaces.ControleurObservation;
 import ca.cours5b5.paulsasu.interfaces.ListenerObservateur;
@@ -28,14 +29,19 @@ public class VPartie extends Vue {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
+        observerPartie();
     }
 
 
     private void observerPartie() {
-        ControleurObservation.observerModele(MParametres.class.getSimpleName(), new ListenerObservateur() {
+        ControleurObservation.observerModele(MPartie.class.getSimpleName(), new ListenerObservateur() {
+            @Override
+            public void reagirNouveauModele(Modele modele) {
+                initialiserGrille(getPartie(modele));
+            }
+
             @Override
             public void reagirChangementAuModele(Modele modele) {
-                initialiserGrille(getPartie(modele));
             }
         });
     }
@@ -46,9 +52,9 @@ public class VPartie extends Vue {
     }
 
     private void initialiserGrille(MPartie partie) {
-        grille = new VGrille(this.getContext());
+        Log.d("Atelier06",partie.toString());
         grille.creerGrille(partie.parametres.hauteur, partie.parametres.largeur);
-
+        Log.d("Atelier06",partie.parametres.hauteur.toString());
     }
 
 

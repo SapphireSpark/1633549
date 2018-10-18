@@ -53,12 +53,19 @@ public class MParametres extends Modele {
     @Override
     public void aPartirObjetJson(Map<String, Object> objetJson) {
 
+        this.parametresPartie.hauteur = Integer.parseInt(objetJson.get("hauteur").toString());
+        this.parametresPartie.largeur = Integer.parseInt(objetJson.get("largeur").toString());
+        this.parametresPartie.pourGagner = Integer.parseInt(objetJson.get("pourGagner").toString());
 
     }
 
     @Override
     public Map<String, Object> enObjetJson() {
         Map<String, Object> objet = new HashMap<>();
+
+        objet.put("hauteur", this.parametresPartie.hauteur.toString());
+        objet.put("largeur", this.parametresPartie.largeur.toString());
+        objet.put("pourGagner", this.parametresPartie.pourGagner.toString());
 
         return objet;
     }
