@@ -1,67 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ca.cours5b5.paulsasu.vues.VParametres xmlns:android="http://schemas.android.com/apk/res/android"
+<ca.cours5b5.Paul2.vues.VParametres xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout_editor_absoluteY="25dp">
+    tools:context=".activites.AParametres"
+    tools:layout_editor_absoluteY="81dp">
 
     <TextView
-        android:id="@+id/textViewH"
-        android:layout_width="90dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="50dp"
-        android:text="@string/def"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="83dp" />
-
-    <TextView
-        android:id="@+id/textViewL"
-        android:layout_width="94dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/defL"
-        app:layout_constraintTop_toBottomOf="@+id/textViewH"
-        tools:layout_editor_absoluteX="79dp" />
-
-    <TextView
-        android:id="@+id/textViewW"
+        android:id="@+id/texte_hauteur"
         android:layout_width="wrap_content"
-        android:layout_height="42dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/defW"
-        app:layout_constraintTop_toBottomOf="@+id/textViewL"
-        tools:layout_editor_absoluteX="85dp" />
-
-    <Spinner
-        android:id="@+id/spinnerH"
-        android:layout_width="111dp"
-        android:layout_height="54dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginStart="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewH"
-        app:layout_constraintStart_toEndOf="@+id/textViewH"
-        app:layout_constraintTop_toTopOf="@+id/textViewH" />
-
-    <Spinner
-        android:id="@+id/spinnerL"
-        android:layout_width="110dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewL"
-        app:layout_constraintStart_toEndOf="@+id/textViewL"
-        app:layout_constraintTop_toTopOf="@+id/textViewL" />
-
-    <Spinner
-        android:id="@+id/spinnerW"
-        android:layout_width="112dp"
-        android:layout_height="54dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginStart="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewW"
-        app:layout_constraintStart_toEndOf="@+id/textViewW"
-        app:layout_constraintTop_toTopOf="@+id/textViewW" />
-</ca.cours5b5.paulsasu.vues.VParametres>
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/hauteur"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.18" />
+
+    <TextView
+        android:id="@+id/texte_largeur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/largeur"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/texte_hauteur"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texte_hauteur"
+        app:layout_constraintVertical_bias="0.100000024" />
+
+    <TextView
+        android:id="@+id/texte_pour_gagner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/pour_gagner"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/texte_largeur"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texte_largeur"
+        app:layout_constraintVertical_bias="0.100000024" />
+
+    <Spinner
+        android:id="@+id/spinner_hauteur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:minWidth="100dp"
+        app:layout_constraintBottom_toBottomOf="@+id/texte_hauteur"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.23"
+        app:layout_constraintStart_toEndOf="@+id/texte_hauteur"
+        app:layout_constraintTop_toTopOf="@+id/texte_hauteur" />
+
+    <Spinner
+        android:id="@+id/spinner_largeur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:minWidth="100dp"
+        app:layout_constraintBottom_toBottomOf="@+id/texte_largeur"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/spinner_hauteur"
+        app:layout_constraintTop_toTopOf="@+id/texte_largeur" />
+
+    <Spinner
+        android:id="@+id/spinner_pour_gagner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:minWidth="100dp"
+        app:layout_constraintBottom_toBottomOf="@+id/texte_pour_gagner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/spinner_largeur"
+        app:layout_constraintTop_toTopOf="@+id/texte_pour_gagner" />
+
+</ca.cours5b5.Paul2.vues.VParametres>
