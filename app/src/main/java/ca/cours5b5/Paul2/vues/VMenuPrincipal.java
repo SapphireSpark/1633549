@@ -18,6 +18,10 @@ public class VMenuPrincipal extends Vue {
 
     private Button boutonPartie;
     private Action actionPartie;
+    private Button boutonConnection;
+    private Action actionConnection;
+    private Button boutonDeconnection;
+    private Action actionDeconnection;
 
     public VMenuPrincipal(Context context) {
         super(context);
@@ -30,6 +34,8 @@ public class VMenuPrincipal extends Vue {
     public VMenuPrincipal(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
+
+
 
     @Override
     protected void onFinishInflate(){
@@ -50,6 +56,12 @@ public class VMenuPrincipal extends Vue {
 
         boutonPartie = findViewById(R.id.bouton_partie);
 
+        boutonConnection = findViewById(R.id.connect);
+
+        boutonDeconnection = findViewById(R.id.deco);
+
+
+
     }
 
     private void demanderActions() {
@@ -57,6 +69,12 @@ public class VMenuPrincipal extends Vue {
         actionParametres = ControleurAction.demanderAction(GCommande.OUVRIR_MENU_PARAMETRES);
 
         actionPartie = ControleurAction.demanderAction(GCommande.DEMARRER_PARTIE);
+
+        actionConnection = ControleurAction.demanderAction(GCommande.CONNECTION);
+
+        actionDeconnection = ControleurAction.demanderAction((GCommande.DECONNECTION));
+
+
 
     }
 
@@ -89,6 +107,24 @@ public class VMenuPrincipal extends Vue {
             }
         });
 
+    }
+
+    private void installerListenerConnection() {
+        boutonConnection.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                actionConnection.executerDesQuePossible();
+            }
+        });
+    }
+
+    private void installerListenerDeconnection() {
+        boutonDeconnection.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                actionDeconnection.executerDesQuePossible();
+            }
+        });
     }
 
 }

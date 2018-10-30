@@ -80,7 +80,8 @@ public final class Disque extends SourceDeDonnees {
     }
 
 
-    private File getFichier(String nomModele) {
+    private File getFichier(String cheminSauvegarde) {
+        String nomModele = this.getNomModele(cheminSauvegarde);
 
         String nomFichier = getNomFichier(nomModele);
 

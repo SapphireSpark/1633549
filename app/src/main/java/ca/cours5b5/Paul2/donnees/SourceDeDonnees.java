@@ -9,4 +9,11 @@ public abstract class SourceDeDonnees {
 
     public abstract void sauvegarderModele(final String cheminSauvegarde, final Map<String, Object> objetJson);
 
+    protected String getNomModele(String cheminSauvegarde) {
+        String [] partie = cheminSauvegarde.split("/");
+        String nomModele = partie[0];
+
+        return nomModele;
+    }
+
 }

@@ -1,7 +1,13 @@
 package ca.cours5b5.Paul2.activites;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+
+
+
+import java.util.ArrayList;
+import java.util.List;
 
 import ca.cours5b5.Paul2.R;
 import ca.cours5b5.Paul2.controleurs.ControleurModeles;
@@ -10,6 +16,9 @@ import ca.cours5b5.Paul2.modeles.MParametres;
 import ca.cours5b5.Paul2.modeles.MPartie;
 
 public class APartie extends Activite {
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,4 +44,6 @@ public class APartie extends Activite {
                 new SauvegardeTemporaire(outState));
 
     }
+
+
 }

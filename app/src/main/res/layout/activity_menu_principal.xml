@@ -10,10 +10,10 @@
         android:id="@+id/bouton_parametres"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/parametres"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,13 +24,37 @@
         android:id="@+id/bouton_partie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/jouer"
         app:layout_constraintBottom_toTopOf="@+id/bouton_parametres"
         app:layout_constraintEnd_toEndOf="@+id/bouton_parametres"
         app:layout_constraintStart_toStartOf="@+id/bouton_parametres"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/connect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:text="@string/connection"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="141dp"
+        tools:layout_editor_absoluteY="38dp" />
+
+    <Button
+        android:id="@+id/deco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/deconnectionconnection"
+        android:visibility="invisible"
+        app:layout_constraintBaseline_toBaselineOf="@+id/connect"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="38dp" />
 </ca.cours5b5.Paul2.vues.VMenuPrincipal>

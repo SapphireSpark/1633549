@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import ca.cours5b5.Paul2.controleurs.interfaces.Fournisseur;
+import ca.cours5b5.Paul2.donnees.Serveur;
 import ca.cours5b5.Paul2.donnees.SourceDeDonnees;
 import ca.cours5b5.Paul2.exceptions.ErreurModele;
 import ca.cours5b5.Paul2.modeles.MParametres;
@@ -13,6 +14,7 @@ import ca.cours5b5.Paul2.modeles.MParametresPartie;
 import ca.cours5b5.Paul2.modeles.MPartie;
 import ca.cours5b5.Paul2.modeles.Modele;
 import ca.cours5b5.Paul2.donnees.Disque;
+import ca.cours5b5.Paul2.usagers.UsagerCourant;
 
 public final class ControleurModeles {
 
@@ -31,6 +33,8 @@ public final class ControleurModeles {
         listeDeSauvegardes = new ArrayList<>();
         listeDeSauvegardes.add(Disque.getInstance());
 
+        listeDeSauvegardes.add(Serveur.getInstance());
+
     }
 
     public static void setSequenceDeChargement(SourceDeDonnees... sequenceDeChargement){
@@ -47,7 +51,11 @@ public final class ControleurModeles {
 
             Map<String, Object> objetJson = modele.enObjetJson();
 
-            sourceDeDonnees.sauvegarderModele(nomModele, objetJson);
+            if (sourceDeDonnees == Serveur.getInstance()) {
+                Serveur.getInstance().sauvegarderModele(getCheminSauvegarde(nomModele), objetJson);
+            } else {
+                sourceDeDonnees.sauvegarderModele(nomModele, objetJson);
+            }
 
         }
     }
@@ -134,6 +142,10 @@ public final class ControleurModeles {
 
             }
         }
+    }
+
+    private static String getCheminSauvegarde(String nomModele) {
+        return nomModele + "/" + UsagerCourant.getId();
     }
 
 }
