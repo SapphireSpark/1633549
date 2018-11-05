@@ -50,11 +50,9 @@
         android:id="@+id/deco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/deconnectionconnection"
+        android:text="@string/deconnection"
         android:visibility="invisible"
         app:layout_constraintBaseline_toBaselineOf="@+id/connect"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="38dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 </ca.cours5b5.Paul2.vues.VMenuPrincipal>
