@@ -126,6 +126,7 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
             @Override
             public void executer(Object... args) {
                 transitionConnection();
+                
 
             }
         });
