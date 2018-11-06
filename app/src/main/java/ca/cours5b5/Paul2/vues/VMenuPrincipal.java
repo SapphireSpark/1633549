@@ -2,6 +2,7 @@ package ca.cours5b5.Paul2.vues;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -18,8 +19,10 @@ public class VMenuPrincipal extends Vue {
 
     private Button boutonPartie;
     private Action actionPartie;
+
     private Button boutonConnection;
     private Action actionConnection;
+
     private Button boutonDeconnection;
     private Action actionDeconnection;
 
@@ -84,6 +87,10 @@ public class VMenuPrincipal extends Vue {
         installerListenerParametres();
 
         installerListenerPartie();
+
+        installerListenerConnection();
+
+        installerListenerDeconnection();
 
     }
 

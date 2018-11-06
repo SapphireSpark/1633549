@@ -26,14 +26,14 @@ import com.google.android.gms.tasks.Task;
 
 public class AMenuPrincipal extends Activite implements Fournisseur {
 
-    Button boutonConnection = findViewById(R.id.connect);
-
-    Button boutonDeconnection = findViewById(R.id.deco);
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if (requestCode == GConstantes.MA_CONSTANTE_CODE_CONNEXION) {
             if (resultCode == RESULT_OK) {
+                Button boutonConnection = findViewById(R.id.connect);
+                Button boutonDeconnection = findViewById(R.id.deco);
+
                 boutonConnection.setVisibility(View.INVISIBLE);
                 boutonDeconnection.setVisibility(View.VISIBLE);
 
@@ -49,7 +49,7 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
 
-        fournirActions();
+       fournirActions();
 
     }
 
@@ -84,6 +84,9 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
         AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
+                Button boutonConnection = findViewById(R.id.connect);
+                Button boutonDeconnection = findViewById(R.id.deco);
+
                 boutonDeconnection.setVisibility(View.INVISIBLE);
                 boutonConnection.setVisibility(View.VISIBLE);
             }
@@ -123,6 +126,7 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
             @Override
             public void executer(Object... args) {
                 transitionConnection();
+
             }
         });
     }
