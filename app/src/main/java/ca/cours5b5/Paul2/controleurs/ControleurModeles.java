@@ -1,11 +1,14 @@
 package ca.cours5b5.Paul2.controleurs;
 
+import android.net.sip.SipSession;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import ca.cours5b5.Paul2.controleurs.interfaces.Fournisseur;
+import ca.cours5b5.Paul2.controleurs.interfaces.ListenerGetModele;
 import ca.cours5b5.Paul2.donnees.Serveur;
 import ca.cours5b5.Paul2.donnees.SourceDeDonnees;
 import ca.cours5b5.Paul2.exceptions.ErreurModele;
@@ -34,6 +37,46 @@ public final class ControleurModeles {
         listeDeSauvegardes.add(Disque.getInstance());
 
         listeDeSauvegardes.add(Serveur.getInstance());
+
+    }
+
+    static void getModele(String nomModele, ListenerGetModele listenerGetModele){
+        if(modelesEnMemoire == null) {
+            
+        }
+
+    }
+
+    private static void creerModeleSelonNom(String nomModele, final ListenerGetModele listenerGetModele) throws ErreurModele {
+
+
+    }
+
+    private static void creerModeleEtChargerDonnees(final String nomModele, final ListenerGetModele listenerGetModele) {
+
+    }
+
+    private static void chargerDonnees(Modele modele, String nomModele, ListenerGetModele listenerGetModele){
+
+    }
+
+    private static void chargementViaSequence(Modele modele, String cheminDeSauvegarde, ListenerGetModele listenerGetModele, int indiceListeCourante){
+
+    }
+
+    private static void chargementViaSourceCouranteOuSuivante(final Modele modele, final String cheminDeSauvegarde, final ListenerGetModele listenerGetModele, final int indiceListeCourante){
+
+    }
+
+    private static void terminerChargementAvecDonnees(Map<String, Object> objetJson, Modele modele, ListenerGetModele listenerGetModele) {
+
+    }
+
+    private static void terminerChargement(Modele modele, ListenerGetModele listenerGetModele) {
+
+    }
+
+    private static void chargementViaSourceSuivante(Modele modele, String cheminDeSauvegarde, ListenerGetModele listenerGetModele, int indiceSourceCourante) {
 
     }
 

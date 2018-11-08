@@ -43,6 +43,11 @@ public class SauvegardeTemporaire extends SourceDeDonnees {
         }
     }
 
+    @Override
+    public void chargerModele(String cheminSauvegarde, ListenerChargement listenerChargement) {
+
+    }
+
     private String getCle(String cheminSauvegarde) {
         String cle = this.getNomModele(cheminSauvegarde);
         return cle;

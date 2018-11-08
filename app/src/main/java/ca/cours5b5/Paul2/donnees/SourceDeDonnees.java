@@ -16,4 +16,6 @@ public abstract class SourceDeDonnees {
         return nomModele;
     }
 
+    public abstract void chargerModele(final String cheminSauvegarde, final ListenerChargement listenerChargement);
+
 }

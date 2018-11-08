@@ -27,4 +27,9 @@ public final class Serveur extends SourceDeDonnees {
         noeud.setValue(objetJson);
 
     }
+
+    @Override
+    public void chargerModele(String cheminSauvegarde, ListenerChargement listenerChargement) {
+
+    }
 }

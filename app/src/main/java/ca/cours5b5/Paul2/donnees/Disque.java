@@ -79,6 +79,11 @@ public final class Disque extends SourceDeDonnees {
         }
     }
 
+    @Override
+    public void chargerModele(String cheminSauvegarde, ListenerChargement listenerChargement) {
+
+    }
+
 
     private File getFichier(String cheminSauvegarde) {
         String nomModele = this.getNomModele(cheminSauvegarde);
