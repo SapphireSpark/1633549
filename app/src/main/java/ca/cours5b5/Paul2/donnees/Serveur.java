@@ -26,7 +26,7 @@ public final class Serveur extends SourceDeDonnees {
     @Override
     public void chargerModele(String cheminSauvegarde, final ListenerChargement listenerChargement) {
 
-        if (findNomModele(cheminSauvegarde)){ //vérifier le cheminSauvegarde, il doit etre de forme nomModele/IdUsager
+        if (findNomModele(cheminSauvegarde)){
             DatabaseReference noeud = FirebaseDatabase.getInstance().getReference(cheminSauvegarde);
 
             noeud.addListenerForSingleValueEvent(new ValueEventListener() {

@@ -103,13 +103,8 @@ public final class ControleurModeles {
 
         }
 
-        //creerModeleSelonNom(nomModele, listenerGetModele);
-
-        //modelesEnMemoire.put()
 
         chargerDonnees(modele, nomModele, listenerGetModele);
-        //modelesEnMemoire.put()
-        //memoriser le modele en memoire
     }
 
     private static void chargerDonnees(Modele modele, String nomModele, ListenerGetModele listenerGetModele){
@@ -132,6 +127,7 @@ public final class ControleurModeles {
     private static void chargementViaSourceCouranteOuSuivante(final Modele modele, final String cheminDeSauvegarde, final ListenerGetModele listenerGetModele, final int indiceSourceCourante ){
         Log.d("atelier12", ControleurModeles.class.getSimpleName() + "::chargementViaSequenceCouranteOuSuivante");
         Log.d("atelier12", ControleurModeles.class.getSimpleName() + "::chemein = " + cheminDeSauvegarde);
+
         SourceDeDonnees source = sequenceDeChargement[indiceSourceCourante];
         source.chargerModele(cheminDeSauvegarde, new ListenerChargement() {
             @Override

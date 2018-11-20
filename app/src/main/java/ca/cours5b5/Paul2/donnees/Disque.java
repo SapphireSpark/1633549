@@ -89,7 +89,9 @@ public final class Disque extends SourceDeDonnees {
 
     @Override
     public void chargerModele(String cheminSauvegarde, ListenerChargement listenerChargement) {
-
+        if (findNomModele(getNomFichier(cheminSauvegarde))) {
+            File fichier = getFichier(cheminSauvegarde);
+        }
     }
 
 
