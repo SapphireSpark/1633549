@@ -11,6 +11,8 @@ import java.nio.file.Files;
 import java.util.Map;
 
 import ca.cours5b5.Paul2.global.GConstantes;
+import ca.cours5b5.Paul2.modeles.MParametres;
+import ca.cours5b5.Paul2.modeles.MPartie;
 import ca.cours5b5.Paul2.serialisation.Jsonification;
 
 public final class Disque extends SourceDeDonnees {
@@ -34,25 +36,31 @@ public final class Disque extends SourceDeDonnees {
     @Override
     public Map<String, Object> chargerModele(String cheminSauvegarde) {
 
-        File fichier = getFichier(cheminSauvegarde);
+        if (findNomModele(getNomFichier(cheminSauvegarde))) {
+            File fichier = getFichier(cheminSauvegarde);
 
-        try {
+            try {
 
-            String json = new String(Files.readAllBytes(fichier.toPath()));
+                String json = new String(Files.readAllBytes(fichier.toPath()));
 
-            Map<String, Object> objetJson = Jsonification.aPartirChaineJson(json);
+                Map<String, Object> objetJson = Jsonification.aPartirChaineJson(json);
 
-            return objetJson;
+                return objetJson;
 
-        } catch (FileNotFoundException e) {
+            } catch (FileNotFoundException e) {
 
+                return null;
+
+            } catch (IOException e) {
+
+                return null;
+
+            }
+
+        } else {
             return null;
-
-        } catch (IOException e) {
-
-            return null;
-
         }
+
     }
 
     @Override
@@ -98,6 +106,36 @@ public final class Disque extends SourceDeDonnees {
 
         return nomModele + GConstantes.EXTENSION_PAR_DEFAUT;
 
+    }
+
+    private Boolean findNomModele(String cheminSauvegarde){
+        boolean retour = true;
+
+        Log.d("atelier12", this.getClass().getSimpleName() + "::findNomModele = "+ cheminSauvegarde);
+
+        if(cheminSauvegarde.contains("/")){
+            retour = false;
+
+        } else {
+
+            String[] cheminSplit = cheminSauvegarde.split("\\.");
+            String nomModele = cheminSplit[0];
+            String extension = cheminSplit[1];
+
+            if (nomModele.equals(MPartie.class.getSimpleName()) || nomModele.equals(MParametres.class.getSimpleName())){
+
+            } else if (!extension.equals(GConstantes.EXTENSION_PAR_DEFAUT)){
+
+                retour = false;
+            } else {
+
+                retour = false;
+            }
+
+        }
+
+        Log.d("atelier12", this.getClass().getSimpleName() + "::findNomModele = "+ retour);
+        return retour;
     }
 
 }
