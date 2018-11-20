@@ -52,7 +52,21 @@ public class SauvegardeTemporaire extends SourceDeDonnees {
 
     @Override
     public void chargerModele(String cheminSauvegarde, ListenerChargement listenerChargement) {
+        if (findNomModele(getCle(cheminSauvegarde))) {
+            if(bundle != null && bundle.containsKey(getCle(cheminSauvegarde))){
+                Log.d("atelier12", "chargement de la sauvegardeTemporaire");
+                String json = bundle.getString(getCle(cheminSauvegarde));
 
+                Map<String, Object> objetJson = Jsonification.aPartirChaineJson(json);
+
+                listenerChargement.reagirSucces(objetJson);
+
+            }else{
+                Log.d("atelier12", "non-chargement de la sauvegardeTemporaire");
+                listenerChargement.reagirErreur(null);
+
+            }
+        }
     }
 
     private String getCle(String cheminSauvegarde) {

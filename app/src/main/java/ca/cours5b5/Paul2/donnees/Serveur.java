@@ -26,6 +26,7 @@ public final class Serveur extends SourceDeDonnees {
     @Override
     public void chargerModele(String cheminSauvegarde, final ListenerChargement listenerChargement) {
 
+        Log.d("atelier12", cheminSauvegarde + "::chargement de la sauvegarde serveur");
         if (findNomModele(cheminSauvegarde)){
             DatabaseReference noeud = FirebaseDatabase.getInstance().getReference(cheminSauvegarde);
 
