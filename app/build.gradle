@@ -4,9 +4,9 @@ android {
     signingConfigs {
         debug {
             keyAlias 'key0'
-            keyPassword 'Cours5b5'
+            keyPassword 'alloroot'
             storeFile file('C:/Users/Paul/AndroidStudioProjects/paul2/app/src/main/java/ca/cours5b5/Paul2/debug.jks')
-            storePassword 'Cours5b5'
+            storePassword 'alloroot'
         }
     }
     compileSdkVersion 26
