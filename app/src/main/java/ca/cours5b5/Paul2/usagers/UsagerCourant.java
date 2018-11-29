@@ -2,21 +2,32 @@ package ca.cours5b5.Paul2.usagers;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class UsagerCourant {
-    public static boolean siUsagerConnecte() {
-        boolean check = true;
+import ca.cours5b5.Paul2.global.GConstantes;
 
-        if (FirebaseAuth.getInstance().getCurrentUser() == null ) {
-            check = false;
+public final class UsagerCourant {
+
+    private UsagerCourant(){}
+
+    public static boolean siUsagerConnecte(){
+        return FirebaseAuth.getInstance().getUid() != null;
+    }
+
+    public static String getId(){
+
+        if(siUsagerConnecte()){
+
+            return FirebaseAuth.getInstance().getUid();
+
+        }else{
+
+            return GConstantes.ID_PAR_DEFAUT;
+
         }
-
-        return check;
-
     }
 
-    public static String getId() {
-        String uid = "0";
-        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        return uid;
+    public static boolean estCeUsagerCourant(String idJoueur) {
+        return getId().equals(idJoueur);
     }
+
+
 }

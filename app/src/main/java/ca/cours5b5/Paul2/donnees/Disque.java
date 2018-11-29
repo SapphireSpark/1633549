@@ -11,11 +11,11 @@ import java.nio.file.Files;
 import java.util.Map;
 
 import ca.cours5b5.Paul2.global.GConstantes;
-import ca.cours5b5.Paul2.modeles.MParametres;
-import ca.cours5b5.Paul2.modeles.MPartie;
 import ca.cours5b5.Paul2.serialisation.Jsonification;
 
 public final class Disque extends SourceDeDonnees {
+
+    private Disque(){}
 
     private static final Disque instance = new Disque();
 
@@ -25,43 +25,32 @@ public final class Disque extends SourceDeDonnees {
 
     private File repertoireRacine;
 
-    private Disque() {}
 
     public void setRepertoireRacine(File repertoireRacine) {
-
         this.repertoireRacine = repertoireRacine;
-
     }
+
 
     @Override
-    public Map<String, Object> chargerModele(String cheminSauvegarde) {
+    public void chargerModele(String cheminSauvegarde, ListenerChargement listenerChargement) {
 
-        if (findNomModele(getNomFichier(cheminSauvegarde))) {
-            File fichier = getFichier(cheminSauvegarde);
+        File fichier = getFichier(cheminSauvegarde);
 
-            try {
+        try {
 
-                String json = new String(Files.readAllBytes(fichier.toPath()));
+            String json = new String(Files.readAllBytes(fichier.toPath()));
 
-                Map<String, Object> objetJson = Jsonification.aPartirChaineJson(json);
+            Map<String, Object> objetJson = Jsonification.aPartirChaineJson(json);
 
-                return objetJson;
+            listenerChargement.reagirSucces(objetJson);
 
-            } catch (FileNotFoundException e) {
+        } catch (IOException e) {
 
-                return null;
+            listenerChargement.reagirErreur(e);
 
-            } catch (IOException e) {
-
-                return null;
-
-            }
-
-        } else {
-            return null;
         }
-
     }
+
 
     @Override
     public void sauvegarderModele(String cheminSauvegarde, Map<String, Object> objetJson) {
@@ -76,49 +65,33 @@ public final class Disque extends SourceDeDonnees {
 
             outputStream.write(json.getBytes());
 
+            outputStream.close();
+
         } catch (FileNotFoundException e) {
 
             Log.d("Atelier07", "File not found: " + cheminSauvegarde);
 
         } catch (IOException e) {
 
+
             Log.d("Atelier07", "IOException: " + cheminSauvegarde);
 
         }
     }
 
+
     @Override
-    public void chargerModele(String cheminSauvegarde, ListenerChargement listenerChargement) {
-        if (findNomModele(getNomFichier(cheminSauvegarde))){
+    public void detruireSauvegarde(String cheminSauvegarde) {
 
-            File fichier = getFichier(cheminSauvegarde);
+        File fichier = getFichier(cheminSauvegarde);
+        fichier.delete();
 
-            try {
-
-                String json = new String(Files.readAllBytes(fichier.toPath()));
-
-                Map<String, Object> objetJson = Jsonification.aPartirChaineJson(json);
-                Log.d("atelier12", "chargement de la sauvegarde disque");
-                listenerChargement.reagirSucces(objetJson);
-
-            } catch (FileNotFoundException e) {
-                Log.d("atelier12", "non-chargement de la sauvegarde disque");
-
-                listenerChargement.reagirErreur(e);
-
-            } catch (IOException e) {
-                Log.d("atelier12", "non-chargement de la sauvegarde disque");
-
-                listenerChargement.reagirErreur(e);
-
-            }
-
-        }
     }
 
 
     private File getFichier(String cheminSauvegarde) {
-        String nomModele = this.getNomModele(cheminSauvegarde);
+
+        String nomModele = getNomModele(cheminSauvegarde);
 
         String nomFichier = getNomFichier(nomModele);
 
@@ -126,40 +99,12 @@ public final class Disque extends SourceDeDonnees {
 
     }
 
+
     private String getNomFichier(String nomModele) {
 
         return nomModele + GConstantes.EXTENSION_PAR_DEFAUT;
 
     }
 
-    private Boolean findNomModele(String cheminSauvegarde){
-        boolean retour = true;
-
-        Log.d("atelier12", this.getClass().getSimpleName() + "::findNomModele = "+ cheminSauvegarde);
-
-        if(cheminSauvegarde.contains("/")){
-            retour = false;
-
-        } else {
-
-            String[] cheminSplit = cheminSauvegarde.split("\\.");
-            String nomModele = cheminSplit[0];
-            String extension = cheminSplit[1];
-
-            if (nomModele.equals(MPartie.class.getSimpleName()) || nomModele.equals(MParametres.class.getSimpleName())){
-
-            } else if (!extension.equals(GConstantes.EXTENSION_PAR_DEFAUT)){
-
-                retour = false;
-            } else {
-
-                retour = false;
-            }
-
-        }
-
-        Log.d("atelier12", this.getClass().getSimpleName() + "::findNomModele = "+ retour);
-        return retour;
-    }
 
 }

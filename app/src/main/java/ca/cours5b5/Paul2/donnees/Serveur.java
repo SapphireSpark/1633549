@@ -1,7 +1,5 @@
 package ca.cours5b5.Paul2.donnees;
 
-import android.util.Log;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -10,88 +8,66 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Map;
 
-import ca.cours5b5.Paul2.modeles.MParametres;
-import ca.cours5b5.Paul2.modeles.MPartie;
+import ca.cours5b5.Paul2.controleurs.ControleurModeles;
+import ca.cours5b5.Paul2.exceptions.ErreurModele;
+import ca.cours5b5.Paul2.serialisation.Jsonification;
 
 public final class Serveur extends SourceDeDonnees {
 
     private Serveur(){}
+
     private static final Serveur instance = new Serveur();
 
-    public static Serveur getInstance() {
-        return instance;
-    }
+    public static Serveur getInstance(){return instance;}
 
 
     @Override
-    public void chargerModele(String cheminSauvegarde, final ListenerChargement listenerChargement) {
+    public void chargerModele(final String cheminSauvegarde, final ListenerChargement listenerChargement) {
 
-        Log.d("atelier12", cheminSauvegarde + "::chargement de la sauvegarde serveur");
-        if (findNomModele(cheminSauvegarde)){
-            DatabaseReference noeud = FirebaseDatabase.getInstance().getReference(cheminSauvegarde);
+        DatabaseReference noeudModele = FirebaseDatabase.getInstance().getReference(cheminSauvegarde);
 
-            noeud.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        Map<String, Object> objetJson = (Map<String, Object>) dataSnapshot.getValue();
-                        Log.d("atelier12", Serveur.class.getSimpleName() + "::chargement de la sauvegarde serveur");
-                        listenerChargement.reagirSucces(objetJson);
-                        //donnees
-                    } else {
-                        //pas de donnees
-                        Log.d("atelier12", Serveur.class.getSimpleName() + "::non-chargement de la sauvegarde serveur");
-                        listenerChargement.reagirErreur(null);
-                    }
+        noeudModele.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if(dataSnapshot.exists()){
+
+                    Map<String, Object> objetJson = (Map<String, Object>) dataSnapshot.getValue();
+
+                    listenerChargement.reagirSucces(objetJson);
+
+                }else{
+
+                    listenerChargement.reagirErreur(new ErreurModele("noeudInexistant: " + cheminSauvegarde));
+
                 }
+            }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    //erreur de lecture
-                    Log.d("atelier12", Serveur.class.getSimpleName() + "::non-chargement de la sauvegarde serveur");
-                    listenerChargement.reagirErreur(null);
-                }
-            });
-        }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+                listenerChargement.reagirErreur(databaseError.toException());
+
+            }
+        });
     }
 
-    @Override
-    public Map<String, Object> chargerModele(String cheminSauvegarde) {
-        return null;
-    }
 
     @Override
     public void sauvegarderModele(String cheminSauvegarde, Map<String, Object> objetJson) {
-        String chemin = cheminSauvegarde;
-        DatabaseReference noeud = FirebaseDatabase.getInstance().getReference(chemin);
-        noeud.setValue(objetJson);
+
+        DatabaseReference noeudModele = FirebaseDatabase.getInstance().getReference(cheminSauvegarde);
+        noeudModele.setValue(objetJson);
 
     }
 
-    private Boolean findNomModele(String cheminSauvegarde){
-        boolean retour = true;
+    @Override
+    public void detruireSauvegarde(String cheminSauvegarde) {
 
-        Log.d("atelier12", this.getClass().getSimpleName() + "::findNomModele = "+ cheminSauvegarde);
+        DatabaseReference noeudModele = FirebaseDatabase.getInstance().getReference(cheminSauvegarde);
+        noeudModele.removeValue();
 
-        if(!cheminSauvegarde.contains("/")){
-            retour = false;
-
-        } else {
-
-            String[] cheminSplit = cheminSauvegarde.split("/");
-            String nomModele = cheminSplit[0];
-            String extension = cheminSplit[1];
-
-            if (nomModele.equals(MPartie.class.getSimpleName()) || nomModele.equals(MParametres.class.getSimpleName())){
-
-            } else {
-
-                retour = false;
-            }
-
-        }
-        Log.d("atelier12", this.getClass().getSimpleName() + "::findNomModele = "+ retour);
-        return retour;
     }
+
 
 }
