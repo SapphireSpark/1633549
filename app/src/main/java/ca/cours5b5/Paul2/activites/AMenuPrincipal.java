@@ -3,6 +3,8 @@ package ca.cours5b5.Paul2.activites;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.Button;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -60,6 +62,7 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
                     public void executer(Object... args) {
 
                             transitionAttendreAdversaire();
+
                     }
                 });
     }
@@ -187,11 +190,22 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
 
             if (resultCode == RESULT_OK) {
 
+                Intent intentionAttendreAdversaire = new Intent(this, AEnAttenteAdversaire.class);
+
+                startActivity(intentionAttendreAdversaire);
+
                 // Connexion réussie
+                Button boutonConnexion = findViewById(R.id.bouton_connexion);
+
+                boutonConnexion.setText(R.string.deconnexion);
 
             } else {
 
                 // connexion échouée
+
+                Button boutonConnexion = findViewById(R.id.bouton_connexion);
+
+                boutonConnexion.setText(R.string.connexion);
             }
         }
     }

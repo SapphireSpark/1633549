@@ -75,6 +75,19 @@ public abstract class Vue extends ConstraintLayout implements Fournisseur {
     private void afficherMessage(String message) {
 
         Snackbar fenetreMessage = Snackbar.make(this, message, Snackbar.LENGTH_SHORT);
+        fenetreMessage.addCallback(new Snackbar.Callback() {
+
+            @Override
+            public void onDismissed(Snackbar snackbar, int event) {
+
+                if (event == Snackbar.Callback.DISMISS_EVENT_TIMEOUT) {
+                    Action actionConnexion = ControleurAction.demanderAction(GCommande.CONNEXION);
+                    actionConnexion.executerDesQuePossible();
+                }
+
+            }
+
+        });
         fenetreMessage.show();
 
     }

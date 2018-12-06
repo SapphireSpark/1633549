@@ -20,8 +20,7 @@ public final class ControleurPartie {
         Action actionAfficherMessage = ControleurAction.demanderAction(GCommande.AFFICHER_MESSAGE_GAGNANT);
 
 
-        actionAfficherMessage.setArguments(couleurGagnante,
-                actionTerminerPartie);
+        actionAfficherMessage.setArguments(couleurGagnante, actionTerminerPartie);
 
         actionAfficherMessage.executerDesQuePossible();
 

@@ -50,7 +50,9 @@ public class MPartie extends Modele implements Fournisseur {
     }
 
     private void initialiserCouleurCourante() {
+
         couleurCourante = GCouleur.ROUGE;
+
     }
 
 
@@ -101,10 +103,12 @@ public class MPartie extends Modele implements Fournisseur {
 
             ControleurPartie.getInstance().gagnerPartie(couleurCourante);
 
-        } else {
+        } else if (couleurCourante == GCouleur.ROUGE){
+            couleurCourante = GCouleur.JAUNE;
 
-            prochaineCouleurCourante();
-
+            } else {
+            
+            couleurCourante = GCouleur.ROUGE;
         }
     }
 
@@ -114,20 +118,6 @@ public class MPartie extends Modele implements Fournisseur {
 
         return mColonne.getJetons().size() < parametres.getHauteur();
 
-    }
-
-
-    private void prochaineCouleurCourante() {
-
-        switch (couleurCourante) {
-
-            case ROUGE:
-                couleurCourante = GCouleur.JAUNE;
-                break;
-
-            case JAUNE:
-                couleurCourante = GCouleur.ROUGE;
-        }
     }
 
 

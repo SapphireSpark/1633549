@@ -5,6 +5,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
+
 import ca.cours5b5.Paul2.R;
 import ca.cours5b5.Paul2.controleurs.Action;
 import ca.cours5b5.Paul2.controleurs.ControleurAction;
@@ -40,7 +43,6 @@ public class VMenuPrincipal extends Vue {
     private Button boutonConnexion;
     private Action actionConnexion;
     private Action actionDeconnexion;
-
 
     @Override
     protected void onFinishInflate(){
@@ -104,7 +106,14 @@ public class VMenuPrincipal extends Vue {
         boutonPartieReseau.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                actionPartieReseau.executerDesQuePossible();
+                if(!UsagerCourant.siUsagerConnecte()) {
+                    actionConnexion.executerDesQuePossible();
+                } else {
+                    actionPartieReseau.executerDesQuePossible();
+                }
+
+
+
             }
         });
 

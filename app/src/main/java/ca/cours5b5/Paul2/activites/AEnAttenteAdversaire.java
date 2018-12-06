@@ -8,6 +8,7 @@ import android.util.Log;
 import java.util.Map;
 
 import ca.cours5b5.Paul2.R;
+import ca.cours5b5.Paul2.controleurs.Action;
 import ca.cours5b5.Paul2.controleurs.ControleurAction;
 import ca.cours5b5.Paul2.donnees.Transition;
 import ca.cours5b5.Paul2.global.GConstantes;
@@ -53,6 +54,11 @@ public class AEnAttenteAdversaire extends AppCompatActivity implements Fournisse
 
 
     private void transitionVersPartieReseau(Map<String, Object> objetJsonPartie){
+        Action actionConnexion = ControleurAction.demanderAction(GCommande.CONNEXION);
+
+        if(!UsagerCourant.siUsagerConnecte()) {
+            actionConnexion.executerDesQuePossible();
+        }
 
         String nomModele = MPartieReseau.class.getSimpleName();
 
